@@ -9,6 +9,7 @@ import ApplyJobs from "../Pages/ApplyJobs/ApplyJobs";
 import Addjobs from "../Pages/AddJobs/Addjobs";
 import MyJobs from "../Pages/MyJobs/MyJobs";
 import Blog from "../Pages/Blog/Blog"
+import PrivetRouts from "../PrivetRouts/PrivetRouts";
 
 
 const Router = createBrowserRouter([
@@ -35,15 +36,15 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/appliedJobs",
-                element: <ApplyJobs></ApplyJobs>
+                element: <PrivetRouts><ApplyJobs></ApplyJobs></PrivetRouts>
             },
             {
                 path: "/addJobs",
-                element: <Addjobs></Addjobs>
+                element: <PrivetRouts><Addjobs></Addjobs></PrivetRouts>
             },
             {
                 path: "/myJobs",
-                element: <MyJobs></MyJobs>
+                element: <PrivetRouts><MyJobs></MyJobs></PrivetRouts>
             },
             {
                 path: "/blogs",
