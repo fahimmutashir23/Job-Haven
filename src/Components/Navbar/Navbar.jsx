@@ -8,12 +8,12 @@ const Navbar = () => {
 
   const handleToggle = (e) => {
     console.log(e.target.checked);
-    if(e.target.checked){
-        setTheme("synthwave")
-    } else{
-        setTheme("emerald")
+    if (e.target.checked) {
+      setTheme("synthwave");
+    } else {
+      setTheme("emerald");
     }
-  }
+  };
 
   const navItem = (
     <>
@@ -23,15 +23,21 @@ const Navbar = () => {
       <li>
         <NavLink to="/allJobs">All Jobs</NavLink>
       </li>
-      <li>
-        <NavLink to="/appliedJobs">Applied Jobs</NavLink>
-      </li>
-      <li>
-        <NavLink to="/addJobs">Add to Jobs</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myJobs">My Jobs</NavLink>
-      </li>
+      {user ? (
+        <>
+          <li>
+            <NavLink to="/appliedJobs">Applied Jobs</NavLink>
+          </li>
+          <li>
+            <NavLink to="/addJobs">Add to Jobs</NavLink>
+          </li>
+          <li>
+            <NavLink to="/myJobs">My Jobs</NavLink>
+          </li>
+        </>
+      ) : (
+        ""
+      )}
       <li>
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
@@ -89,7 +95,9 @@ const Navbar = () => {
                   tabIndex={0}
                   className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                 >
-                  <li><p>{user?.displayName}</p></li>
+                  <li>
+                    <p>{user?.displayName}</p>
+                  </li>
                   <li>
                     <p onClick={logout}>Log Out</p>
                   </li>
@@ -107,12 +115,7 @@ const Navbar = () => {
 
           <div className="ml-2">
             <label className="swap swap-rotate">
-              <input 
-              onChange={handleToggle}
-              name="checked"
-              type="checkbox"
-              
-               />
+              <input onChange={handleToggle} name="checked" type="checkbox" />
               <svg
                 className="swap-on fill-current w-7 h-7"
                 xmlns="http://www.w3.org/2000/svg"

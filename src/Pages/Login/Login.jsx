@@ -64,7 +64,7 @@ const Login = () => {
 
       <div className="w-1/2">
         <form onSubmit={handleSubmit}>
-          <h2 className="text-3xl uppercase text-center font-bold text-blue-950 mb-10">
+          <h2 className="text-3xl uppercase text-center font-bold text-blue-950 mb-10 dark:text-orange-500">
             Sign In
           </h2>
           <div className="relative z-0 w-full mb-6 group">
