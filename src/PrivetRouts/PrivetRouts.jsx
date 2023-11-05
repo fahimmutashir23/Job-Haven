@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/Provider";
-
 import Swal from "sweetalert2";
 import { HashLoader } from "react-spinners";
 
