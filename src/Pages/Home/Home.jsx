@@ -3,26 +3,34 @@ import useAxios from "../../Hooks/useAxios";
 import { Tab, Tabs, TabList, } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import CategoryJob from "./CategoryJob";
+import { HashLoader } from "react-spinners";
+
 
 const Home = () => {
   const [data, setData] = useState(null);
   const [category, setCategory] = useState(null);
   const [categoryJob, setCategoryJob] = useState(null);
+  const [loading, setLoading] = useState(true);
   const axios = useAxios();
 
-  console.log(categoryJob);
   useEffect(() => {
+    setLoading(true)
     axios.get(`/category`).then((res) => setCategory(res.data));
+    setLoading(false)
   }, [axios]);
 
   useEffect(() => {
+    setLoading(true)
     axios.get(`/jobs?category=${data}`).then((res) => setCategoryJob(res.data));
+    setLoading(false)
   }, [axios, data]);
 
   return (
     <div>
-      <h1 className="text-3xl">total data: {category?.length}</h1>
-      <div className="flex justify-center gap-6">
+      <div className="flex justify-center gap-6 mt-5">
+      <div className="flex justify-center mt-7">
+        {loading? <HashLoader color="#7752FE" />: ""}
+        </div>
           <Tabs>
             <TabList>
               {
