@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/Provider";
 import Swal from "sweetalert2";
 import { HashLoader } from "react-spinners";
+import { Navigate, useLocation } from "react-router-dom";
 
 const PrivetRouts = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
+  const location = useLocation()
 
   if (loading) {
     return <div className="flex justify-center my-7">
@@ -21,7 +23,7 @@ const PrivetRouts = ({ children }) => {
       text: "Please Login first to use this service",
       icon: "warning",
       confirmButtonText: "Cool",
-    });
+    }) && <Navigate state={location.pathname} to="/login"></Navigate>
   }
 };
 

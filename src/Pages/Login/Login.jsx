@@ -1,13 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/image/logo/job_haven_1.png";
+import google from "../../assets/image/google1.png"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
 
 const Login = () => {
     const [errorMsg, setErrorMsg] = useState('');
-    const {signIn} = useContext(AuthContext);
+    const {signIn, googleSignIn} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
 
   const handleSubmit = (e) => {
@@ -34,6 +36,16 @@ const Login = () => {
       });
     e.target.reset();
   };
+
+  const handleGoogleLogin = () => {
+      googleSignIn().then(() => {
+        Swal.fire(
+          "Log In successful",
+          "Thank you to login our website",
+          "success"
+        ) && navigate(location?.state ? location.state : "/")
+      })
+  }
 
   return (
     <div className="flex flex-row-reverse justify-center items-center min-h-[80vh] gap-6">
@@ -102,6 +114,13 @@ const Login = () => {
             Submit
           </button>
         </form>
+        <div className="mt-5 text-center text-xl">
+          <h1>or</h1>
+          <p className="font-semibold">Login from</p>
+          <div onClick={handleGoogleLogin} className="btn btn-outline mt-2 w-full">
+            <img src={google} alt="" className="w-20"/>
+          </div>
+        </div>
       </div>
     </div>
   );

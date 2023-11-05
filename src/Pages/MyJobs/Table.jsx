@@ -6,62 +6,66 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const Table = ({ item, data }) => {
-    const axios = useAxios()
-    const [tableData, setTableData] = useState(item)
+  const axios = useAxios();
+  const [tableData, setTableData] = useState(item);
 
-    const handleDelete = (e) => {
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                axios.delete(`/jobs/${e}`)
-                .then(res => {
-                    if(res.data.deletedCount){
-                        const filterData = data?.filter(item => item._id !== e);
-                        setTableData(filterData)
-                        Swal.fire({
-                            title: "Delete Successfully",
-                            text: "Thank You for contribution us",
-                            icon: "success",
-                            confirmButtonText: "Cool",
-                          });
-                    }
-                })
-            }
-          })
-    }
+  const handleDelete = (e) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`/jobs/${e}`).then((res) => {
+          if (res.data.deletedCount) {
+            const filterData = data?.filter((item) => item._id !== e);
+            setTableData(filterData);
+            Swal.fire({
+              title: "Delete Successfully",
+              text: "Thank You for contribution us",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+          }
+        });
+      }
+    });
+  };
   return (
-    
-      <tr>
-        <td>{tableData.name}</td>
-        <td>{tableData.job_title}</td>
-        <td>{tableData.category}</td>
+    <tr>
+      <td>{tableData.name}</td>
+      <td>{tableData.job_title}</td>
+      <td>{tableData.category}</td>
+      {
+        tableData._id !== item._id ? "" :
         <td className="flex flex-col md:flex-row gap-1 items-center">
-            <Link
+          <Link
             to={`/update/${tableData._id}`}
-             className="bg-blue-600 text-white w-16 text-xs py-1 text-center rounded-md flex items-center gap-1 justify-center cursor-pointer">
-                Update
-                <AiFillEdit></AiFillEdit>
-            </Link>
-            <div onClick={()=> handleDelete(tableData._id)} className="bg-blue-600 text-white w-16 text-xs py-1 text-center rounded-md flex items-center gap-1 justify-center cursor-pointer">
-                Delete
-                <AiFillDelete></AiFillDelete>
-            </div>
+            className="bg-blue-600 text-white w-16 text-xs py-1 text-center rounded-md flex items-center gap-1 justify-center cursor-pointer"
+          >
+            Update
+            <AiFillEdit></AiFillEdit>
+          </Link>
+          <div
+            onClick={() => handleDelete(tableData._id)}
+            className="bg-blue-600 text-white w-16 text-xs py-1 text-center rounded-md flex items-center gap-1 justify-center cursor-pointer"
+          >
+            Delete
+            <AiFillDelete></AiFillDelete>
+          </div>
         </td>
-      </tr>
+      }
+    </tr>
   );
 };
 
 Table.propTypes = {
   item: PropTypes.object,
-  data: PropTypes.array
+  data: PropTypes.array,
 };
 
 export default Table;
