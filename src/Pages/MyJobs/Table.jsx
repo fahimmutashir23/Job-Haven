@@ -10,19 +10,32 @@ const Table = ({ item, data }) => {
     const [tableData, setTableData] = useState(item)
 
     const handleDelete = (e) => {
-        axios.delete(`/jobs/${e}`)
-        .then(res => {
-            if(res.data.deletedCount){
-                const filterData = data?.filter(item => item._id !== e);
-                setTableData(filterData)
-                Swal.fire({
-                    title: "Delete Successfully",
-                    text: "Thank You for contribution us",
-                    icon: "success",
-                    confirmButtonText: "Cool",
-                  });
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`/jobs/${e}`)
+                .then(res => {
+                    if(res.data.deletedCount){
+                        const filterData = data?.filter(item => item._id !== e);
+                        setTableData(filterData)
+                        Swal.fire({
+                            title: "Delete Successfully",
+                            text: "Thank You for contribution us",
+                            icon: "success",
+                            confirmButtonText: "Cool",
+                          });
+                    }
+                })
             }
-        })
+          })
     }
   return (
     

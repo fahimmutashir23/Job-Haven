@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import CategoryJob from "./CategoryJob";
 import { HashLoader } from "react-spinners";
+import Banner from "../../Components/Banner/Banner";
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
 
   return (
     <div>
+      <Banner></Banner>
       <div className="flex justify-center gap-6 mt-5">
       <div className="flex justify-center mt-7">
         {loading? <HashLoader color="#7752FE" />: ""}
