@@ -13,16 +13,13 @@ const Details = () => {
   const currentDate = moment().format("YYYY-MM-DD");
 
   const {
-    _id,
-    name,
     email,
-    category,
     deadline,
     description,
+    category,
     jobNumber,
     job_title,
     photo,
-    postingDate,
     salary,
   } = data ? data : "";
 
@@ -56,21 +53,20 @@ const Details = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const resume = e.target.resume.value;
-    const applyInfo = {name, email, resume};
+    const applyInfo = { name, email, resume, job_title, salary, category };
     console.log(applyInfo);
-    axios.post("/applyJob", applyInfo)
-    .then(res => {
-        if(res.data.insertedId){
-            Swal.fire({
-                title: "Well Done",
-                text: "Your apply is successful",
-                icon: "success",
-                confirmButtonText: "Cool",
-              });
-              e.target.reset()
-        }
-    })
-  }
+    axios.post("/applyJob", applyInfo).then((res) => {
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: "Well Done",
+          text: "Your apply is successful",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+        e.target.reset();
+      }
+    });
+  };
 
   return (
     <div>
@@ -124,9 +120,8 @@ const Details = () => {
             className="modal modal-bottom sm:modal-middle"
           >
             <div className="modal-box">
-
               <form onSubmit={handleSubmit} className="">
-              <div className="form-control">
+                <div className="form-control">
                   <label className="label">
                     <span className="label-text">Name</span>
                   </label>
@@ -164,17 +159,18 @@ const Details = () => {
                     required
                   />
                 </div>
-                <div className="form-control mt-6">
+                <div className="form-control mt-6 modal-action">
                   <button className="btn btn-primary">
                     <input type="submit" value="Submit" />
                   </button>
+
+                  <div className="modal-action">
+                    <form method="dialog">
+                      <button className="btn btn-primary">close</button>
+                    </form>
+                  </div>
                 </div>
               </form>
-              <div className="modal-action">
-                <form method="dialog">
-                  <button className="btn">Close</button>
-                </form>
-              </div>
             </div>
           </dialog>
         </div>
