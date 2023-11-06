@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import { AuthContext } from "../../Provider/Provider";
 import ApplyCard from "./ApplyCard";
+import { Helmet } from "react-helmet-async";
 
 
 const ApplyJobs = () => {
@@ -24,6 +25,7 @@ const ApplyJobs = () => {
 
   return (
     <div>
+        <Helmet><title>Job Heaven | Apply Jobs</title></Helmet>
       <h1 className="text-center font-bold text-3xl bg-base-200 py-2 px-8 rounded-b-lg max-w-fit mx-auto mb-5">
         Your Apply
       </h1>

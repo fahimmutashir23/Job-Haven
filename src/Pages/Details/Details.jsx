@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
 import moment from "moment/moment";
+import { Helmet } from "react-helmet-async";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Details = () => {
   const [data, setData] = useState(null);
@@ -58,10 +60,10 @@ const Details = () => {
     axios.post("/applyJob", applyInfo).then((res) => {
       if (res.data.insertedId) {
         Swal.fire({
-          title: "Well Done",
-          text: "Your apply is successful",
-          icon: "success",
-          confirmButtonText: "Cool",
+          position: "top-right",
+          title: "Successfully Apply",
+          showConfirmButton: false,
+          timer: 1500,
         });
         e.target.reset();
       }
@@ -70,6 +72,9 @@ const Details = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Job Heaven | Details</title>
+      </Helmet>
       <h1 className="text-center font-bold text-3xl bg-base-200 py-2 px-8 rounded-b-lg max-w-fit mx-auto mb-5">
         {job_title}
       </h1>
@@ -119,7 +124,12 @@ const Details = () => {
             id="my_modal_5"
             className="modal modal-bottom sm:modal-middle"
           >
-            <div className="modal-box">
+            <div className="modal-box relative">
+              <div className="modal-action ">
+                <form method="dialog">
+                  <button className=" absolute top-5 right-5"><AiOutlineClose></AiOutlineClose></button>
+                </form>
+              </div>
               <form onSubmit={handleSubmit} className="">
                 <div className="form-control">
                   <label className="label">
@@ -163,12 +173,6 @@ const Details = () => {
                   <button className="btn btn-primary">
                     <input type="submit" value="Submit" />
                   </button>
-
-                  <div className="modal-action">
-                    <form method="dialog">
-                      <button className="btn btn-primary">close</button>
-                    </form>
-                  </div>
                 </div>
               </form>
             </div>

@@ -4,6 +4,7 @@ import useAxios from "../../Hooks/useAxios";
 import { HashLoader } from "react-spinners";
 import { AuthContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Update = () => {
   const axios = useAxios();
@@ -49,6 +50,7 @@ const Update = () => {
 
   return (
     <div>
+      <Helmet><title>Job Heaven | Update</title></Helmet>
       <h1 className="text-center font-bold text-3xl bg-base-200 py-2 px-8 rounded-b-lg max-w-fit mx-auto mb-5">
         Update Your Job
       </h1>

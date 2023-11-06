@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import CategoryJob from "../Home/CategoryJob";
 import { HashLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 const AllJobs = () => {
   const [data, setData] = useState(null);
@@ -24,6 +25,7 @@ const AllJobs = () => {
 
   return (
     <div>
+        <Helmet><title>Job Heaven | All Jobs</title></Helmet>
       <div className="flex justify-between items-center mt-4 bg-gradient-to-r from-base-200 px-2 rounded-md">
         <h1 className=" text-3xl font-bold">All Jobs Here</h1>
 

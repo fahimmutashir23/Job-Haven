@@ -3,6 +3,7 @@ import logo from "../../assets/image/logo/job_haven_1.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 // import background from "../../assets/image/bg1.png";
 
 const Registration = () => {
@@ -55,6 +56,7 @@ const Registration = () => {
 
   return (
     <div className="flex justify-center items-center min-h-[80vh] gap-6">
+      <Helmet><title>Job Heaven | Registration</title></Helmet>
       <div className="w-1/2 bg-orange-400 h-[90vh] flex pt-16 justify-center rounded-r-full"
     //   style={{backgroundImage: `url(${background})`}}
       >

@@ -4,6 +4,7 @@ import google from "../../assets/image/google1.png"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [errorMsg, setErrorMsg] = useState('');
@@ -49,6 +50,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-row-reverse justify-center items-center min-h-[80vh] gap-6">
+      <Helmet><title>Job Heaven | Login</title></Helmet>
       <div
         className="w-1/2 bg-orange-400 h-[90vh] flex pt-16 justify-center rounded-l-full"
         //   style={{backgroundImage: `url(${background})`}}

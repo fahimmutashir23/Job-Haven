@@ -5,6 +5,7 @@ import "react-tabs/style/react-tabs.css";
 import CategoryJob from "./CategoryJob";
 import { HashLoader } from "react-spinners";
 import Banner from "../../Components/Banner/Banner";
+import { Helmet } from "react-helmet-async";
 
 
 const Home = () => {
@@ -28,6 +29,7 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet><title>Job Heaven | Home</title></Helmet>
       <Banner></Banner>
       <div className="flex justify-center gap-6 mt-5">
       <div className="flex justify-center mt-7">

@@ -3,6 +3,7 @@ import useAxios from "../../Hooks/useAxios";
 import { AuthContext } from "../../Provider/Provider";
 import { HashLoader } from "react-spinners";
 import Table from "./Table";
+import { Helmet } from "react-helmet-async";
 
 const MyJobs = () => {
   const [loading, setLoading] = useState(true);
@@ -18,6 +19,7 @@ const MyJobs = () => {
 
   return (
     <div>
+        <Helmet><title>Job Heaven | My Jobs</title></Helmet>
       <h1 className="text-center font-bold text-3xl bg-base-200 py-2 px-8 rounded-b-lg max-w-fit mx-auto mb-5">
         Your Added Jobs
       </h1>

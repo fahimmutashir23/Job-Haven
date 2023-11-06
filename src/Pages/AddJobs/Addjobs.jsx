@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/Provider";
 import useAxios from "../../Hooks/useAxios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Addjobs = () => {
     const {user} = useContext(AuthContext);
@@ -37,6 +38,7 @@ const Addjobs = () => {
   };
   return (
     <div>
+      <Helmet><title>Job Heaven | Add Jobs</title></Helmet>
       <h1 className="text-center font-bold text-3xl bg-base-200 py-2 px-8 rounded-b-lg max-w-fit mx-auto mb-5">
         Add your job here
       </h1>
