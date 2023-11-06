@@ -25,7 +25,7 @@ const Details = () => {
 
   useEffect(() => {
     axios.get(`/jobs/${id.id}`).then((res) => setData(res.data));
-  }, [axios, id]);
+  }, [axios, id, email]);
 
   const handleApply = () => {
     if (email === user.email) {

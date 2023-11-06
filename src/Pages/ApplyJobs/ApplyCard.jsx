@@ -6,7 +6,7 @@ import { BsPersonCircle } from "react-icons/Bs";
 
 const ApplyCard = ({ job }) => {
   const { user } = useContext(AuthContext);
-  const { job_title, salary, jobNumber } = job;
+  const { job_title, salary, jobNumber, category } = job;
 
   return (
     <div>
@@ -22,6 +22,7 @@ const ApplyCard = ({ job }) => {
             <FaHandHoldingUsd></FaHandHoldingUsd> Salary Range : {salary}
           </h2>
           <h2>Number of apply : {jobNumber}</h2>
+          <h2>Category : {category}</h2>
         </div>
       </div>
     </div>

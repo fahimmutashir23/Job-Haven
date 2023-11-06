@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import useAxios from "../Hooks/useAxios";
 
 
 
@@ -11,6 +12,7 @@ const provider = new GoogleAuthProvider()
 const Provider = ({children}) => {
      const [user, setUser] = useState(null)
      const [loading, setLoading] = useState(true);
+     const axios = useAxios()
 
 
      const signUp = (email, password) => {
@@ -40,14 +42,25 @@ const Provider = ({children}) => {
 
      useEffect(()=> {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            const loggedUser = currentUser?.email || user?.email;
+            const userEmail = {email: loggedUser}
             setUser(currentUser)
             setLoading(false)
+            if(currentUser){
+                axios.post("/jwt", userEmail)
+                .then(res => {
+                    console.log(res.data);
+                })
+            } else{
+                axios.post('/logOut', userEmail).then(res => console.log(res.data))
+            }
         })
         return () => {
             unsubscribe()
         }
-     }, [])
-
+     }, [axios, user])
+     
+     
      const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "emerald")
 
      useEffect(()=> {
@@ -56,7 +69,9 @@ const Provider = ({children}) => {
         document.querySelector("html").setAttribute("data-theme", localTheme)
      }, [theme])
 
+
     const authInfo = {user, loading, signUp, signIn, googleSignIn, logout, updateUserProfile, setTheme};
+
     return (
         <AuthContext.Provider value={authInfo} >
             {children}

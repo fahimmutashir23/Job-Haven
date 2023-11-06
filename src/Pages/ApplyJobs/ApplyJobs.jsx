@@ -8,6 +8,7 @@ const ApplyJobs = () => {
   const axios = useAxios();
   const { user } = useContext(AuthContext);
   const [data, setData] = useState(null);
+  console.log(data);
 
   useEffect(() => {
     axios.get(`applyJob?email=${user.email}`).then((res) => {
@@ -16,7 +17,9 @@ const ApplyJobs = () => {
   }, [axios, user]);
 
   const handleFilter = (e) => {
-    console.log(e.target.value);
+    const filter = e.target.value
+    const filterData = data?.filter(item => item.category === filter)
+    setData(filterData)
   }
 
   return (
