@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import moment from "moment/moment";
 import { Helmet } from "react-helmet-async";
 import { AiOutlineClose } from "react-icons/ai";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Details = () => {
   const [data, setData] = useState(null);
@@ -56,16 +58,28 @@ const Details = () => {
     const email = e.target.email.value;
     const resume = e.target.resume.value;
     const applyInfo = { name, email, resume, job_title, salary, category };
-    console.log(applyInfo);
+    const serviceId = "service_zx23i2o";
+    const templateId = "template_q2ik2uu";
+    const publicKey = "XgUPYfs_nTgL6BBf8"
+    const templateParams = {
+        from_email: user?.email,
+        to_name : user?.displayName
+    };
+
     axios.post("/applyJob", applyInfo).then((res) => {
       if (res.data.insertedId) {
-        Swal.fire({
-          position: "top-right",
-          title: "Successfully Apply",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        e.target.reset();
+
+        emailjs.send(serviceId, templateId, templateParams, publicKey)
+          .then((response) => {
+            if(response){
+                Swal.fire({
+                    position: "top-right",
+                    title: "Successfully Apply and send email",
+                    showConfirmButton: false,
+                    timer: 2000,
+                  });
+            }
+          }).reset();
       }
     });
   };
@@ -127,10 +141,13 @@ const Details = () => {
             <div className="modal-box relative">
               <div className="modal-action ">
                 <form method="dialog">
-                  <button className=" absolute top-5 right-5"><AiOutlineClose></AiOutlineClose></button>
+                  <button className=" absolute top-5 right-5">
+                    <AiOutlineClose></AiOutlineClose>
+                  </button>
                 </form>
               </div>
               <form onSubmit={handleSubmit} className="">
+              
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Name</span>
