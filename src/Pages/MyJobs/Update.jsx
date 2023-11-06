@@ -69,7 +69,7 @@ const Update = () => {
                   type="text"
                   name="name"
                   defaultValue={name}
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className="shadow-sm border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   placeholder=""
                   required
                 />
@@ -82,7 +82,7 @@ const Update = () => {
                   type="text"
                   name="job_title"
                   defaultValue={job_title}
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -94,7 +94,7 @@ const Update = () => {
                   type="text"
                   name="salary"
                   defaultValue={salary}
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -105,7 +105,7 @@ const Update = () => {
                 <select
                   name="category"
                   defaultValue={category}
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 >
                   <option value="Part Time">Part Time</option>
@@ -122,7 +122,7 @@ const Update = () => {
                   type="text"
                   name="jobNumber"
                   defaultValue={jobNumber}
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -136,7 +136,7 @@ const Update = () => {
                   type="date"
                   name="postingDate"
                   defaultValue={postingDate}
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className="shadow-sm  border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   placeholder=""
                   required
                 />
@@ -149,7 +149,7 @@ const Update = () => {
                   type="date"
                   name="deadline"
                   defaultValue={deadline}
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -161,7 +161,7 @@ const Update = () => {
                   type="text"
                   name="photo"
                   defaultValue={photo}
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -173,7 +173,7 @@ const Update = () => {
                   rows="5"
                   name="description"
                   defaultValue={description}
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>

@@ -6,12 +6,13 @@ import CategoryJob from "./CategoryJob";
 import { HashLoader } from "react-spinners";
 import Banner from "../../Components/Banner/Banner";
 import { Helmet } from "react-helmet-async";
+import ContactUs from "./ContactUs";
 
 
 const Home = () => {
   const [data, setData] = useState(null);
   const [category, setCategory] = useState(null);
-  const [categoryJob, setCategoryJob] = useState(null);
+  const [categoryJob, setCategoryJob] = useState();
   const [loading, setLoading] = useState(true);
   const axios = useAxios();
 
@@ -51,6 +52,7 @@ const Home = () => {
           <CategoryJob key={item._id} job={item}></CategoryJob>
         ))}
       </div>
+      <ContactUs></ContactUs>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import moment from "moment/moment";
 import { Helmet } from "react-helmet-async";
 import { AiOutlineClose } from "react-icons/ai";
 import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from 'react-toastify';
+
 
 const Details = () => {
   const [data, setData] = useState(null);
@@ -58,9 +58,9 @@ const Details = () => {
     const email = e.target.email.value;
     const resume = e.target.resume.value;
     const applyInfo = { name, email, resume, job_title, salary, category };
-    const serviceId = "service_zx23i2o";
-    const templateId = "template_q2ik2uu";
-    const publicKey = "XgUPYfs_nTgL6BBf8"
+    const serviceId = import.meta.env.VITE_SERVICEID
+    const templateId = import.meta.env.VITE_TEMPLATEID
+    const publicKey = import.meta.env.VITE_PUBLICKEY
     const templateParams = {
         from_email: user?.email,
         to_name : user?.displayName
@@ -68,7 +68,6 @@ const Details = () => {
 
     axios.post("/applyJob", applyInfo).then((res) => {
       if (res.data.insertedId) {
-
         emailjs.send(serviceId, templateId, templateParams, publicKey)
           .then((response) => {
             if(response){
@@ -79,9 +78,12 @@ const Details = () => {
                     timer: 2000,
                   });
             }
-          }).reset();
+          })
+          e.target.reset();
       }
     });
+   console.log(job_title);
+    axios.put(`/jobs/${job_title}`).then(res=> console.log(res.data))
   };
 
   return (

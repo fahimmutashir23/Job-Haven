@@ -54,7 +54,7 @@ const Addjobs = () => {
                   type="text"
                   name="name"
                   defaultValue={user.displayName}
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className="shadow-sm border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   placeholder=""
                   required
                 />
@@ -66,7 +66,7 @@ const Addjobs = () => {
                 <input
                   type="text"
                   name="job_title"
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -77,7 +77,7 @@ const Addjobs = () => {
                 <input
                   type="text"
                   name="salary"
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -87,7 +87,7 @@ const Addjobs = () => {
                 </label>
                 <select 
                 name="category" 
-                className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required>
                     <option value="Part Time">Part Time</option>
                     <option value="Hybrid">Hybrid</option>
@@ -102,7 +102,9 @@ const Addjobs = () => {
                 <input
                   type="text"
                   name="jobNumber"
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  defaultValue="0"
+                  disabled
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -115,7 +117,7 @@ const Addjobs = () => {
                 <input
                   type="date"
                   name="postingDate"
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className="shadow-sm  border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   placeholder=""
                   required
                 />
@@ -127,7 +129,7 @@ const Addjobs = () => {
                 <input
                   type="date"
                   name="deadline"
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
@@ -138,18 +140,18 @@ const Addjobs = () => {
                 <input
                   type="text"
                   name="photo"
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
               <div className="mb-6">
                 <label className="block mb-2 text-sm font-medium">
-                  Salary range
+                  Job Description
                 </label>
                 <textarea
                 rows="5"
                   name="description"
-                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
+                  className=" border border-gray-300 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400 dark:shadow-sm-light"
                   required
                 />
               </div>
