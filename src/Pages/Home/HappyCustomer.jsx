@@ -5,57 +5,86 @@ import { Navigation, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/bundle";
-
-
+import SwiperBtn from "../../Components/SwiperBtn/SwiperBtn";
+import { useState } from "react";
 
 const HappyCustomer = () => {
-    const axios = useAxios();
-    const tanStackFunc = async() => {
-        const response = await axios.get('/customer');
-        return response
-    }
+  const [review, setReview] = useState("");
+  const [name, setName] = useState("");
+  const axios = useAxios();
+  const tanStackFunc = async () => {
+    const response = await axios.get("/customer");
+    return response;
+  };
 
-    const {data, isLoading} = useQuery({
-        queryKey: ["customer"],
-        queryFn: tanStackFunc
-    })
+  const { data, isLoading } = useQuery({
+    queryKey: ["customer"],
+    queryFn: tanStackFunc,
+  });
+  
 
-    if(isLoading){
-        return <div className="flex justify-center my-7">
-        <HashLoader color="#7752FE" />
-    </div>
-    }
-    console.log(data.data);
-
+  if (isLoading) {
     return (
-        <div>
-            <section className="col-span-2" data-aos="fade-left">
+      <div className="flex justify-center my-7">
+        <HashLoader color="#7752FE" />
+      </div>
+    );
+  }
+
+  const handleReview = (review, name) => {
+    setReview(review);
+    setName(name);
+  };
+
+  return (
+    <div className="">
+      <hr />
+      <h1 className="text-center font-bold text-3xl bg-base-200 py-2 px-8 rounded-b-lg max-w-fit mx-auto mb-5">
+        Review who got job
+      </h1>
+      <section className="max-w-3xl mx-auto">
+        <div className="h-44 max-w-2xl mx-auto bg-base-200 border-2 border-double border-orange-400 p-4 relative overflow-y-auto">
+          <p>{review}</p>
+          <p className="text-sm font-semibold max-w-fit absolute bottom-0 right-0 border-t-2 border-l-2 border-double border-orange-400 p-2">
+            {name}
+          </p>
+        </div>
+      </section>
+      <section className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <Swiper
             modules={[Navigation, A11y]}
-            spaceBetween={50}
+            spaceBetween={0}
             loop={true}
-            slidesPerView={2.5}
+            slidesPerView={4}
           >
-            {data.map((oneData) => (
+            {data.data.map((oneData) => (
               <SwiperSlide key={oneData.id} className="p-2">
-                <Link
-                  onClick={() => handleClick(oneData.id)}
-                  className="hero h-[340px] rounded-2xl relative hover:scale-[1.05] transition 1s"
-                  style={{
-                    backgroundImage: `url(${oneData.vertical_banner_image})`,
-                  }}
+                <div
+                  onClick={() =>
+                    handleReview(oneData.short_review, oneData.name)
+                  }
+                  className="rounded-2xl hover:scale-[1.05] transition 1s cursor-pointer"
                 >
-                  <div className="h-20 w-full bg-black absolute bottom-0 bg-opacity-70 rounded-b-2xl font-babe text-3xl p-3">
-                    {oneData.spot_name}
+                  <div className="flex flex-col items-center">
+                    <img
+                      src={oneData.photo}
+                      alt=""
+                      className="w-16 h-16 rounded-full"
+                    />
+                    {oneData.name}
                   </div>
-                </Link>
+                </div>
               </SwiperSlide>
             ))}
-            <SwiperBtn></SwiperBtn>
+            <div className="flex justify-center mb-5">
+              <SwiperBtn></SwiperBtn>
+            </div>
           </Swiper>
-        </section>
         </div>
-    );
+      </section>
+    </div>
+  );
 };
 
 export default HappyCustomer;
