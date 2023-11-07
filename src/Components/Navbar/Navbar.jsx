@@ -2,12 +2,12 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/image/logo/job_haven_1.png";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Provider";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, logout, setTheme } = useContext(AuthContext);
 
   const handleToggle = (e) => {
-    console.log(e.target.checked);
     if (e.target.checked) {
       setTheme("synthwave");
     } else {
@@ -82,7 +82,9 @@ const Navbar = () => {
         <div className="navbar-end ">
           <div>
             {user ? (
-              <div className="dropdown dropdown-end">
+              <div className="dropdown dropdown-end flex items-center gap-2">
+                <button className="btn btn-primary" onClick={logout}>Log Out</button>
+                <a data-tooltip-id="my-tooltip-children-multiline">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-12 rounded-full border-2 border-black">
                     <img
@@ -91,17 +93,12 @@ const Navbar = () => {
                     />
                   </div>
                 </label>
-                <ul
-                  tabIndex={0}
-                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <p>{user?.displayName}</p>
-                  </li>
-                  <li>
-                    <p onClick={logout}>Log Out</p>
-                  </li>
-                </ul>
+                </a>
+                <Tooltip id="my-tooltip-children-multiline">
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <span>{user?.displayName}</span>
+                  </div>
+                </Tooltip>
               </div>
             ) : (
               <Link

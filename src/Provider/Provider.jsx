@@ -48,11 +48,11 @@ const Provider = ({children}) => {
             setLoading(false)
             if(currentUser){
                 axios.post("/jwt", userEmail)
-                .then(res => {
-                    console.log(res.data);
+                .then(() => {
+                    
                 })
             } else{
-                axios.post('/logOut', userEmail).then(res => console.log(res.data))
+                axios.post('/logOut', userEmail).then(() => {})
             }
         })
         return () => {

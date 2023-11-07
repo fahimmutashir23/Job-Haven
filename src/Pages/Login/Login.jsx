@@ -1,14 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/image/logo/job_haven_1.png";
 import google from "../../assets/image/google1.png"
-import { useContext, useState } from "react";
-import { AuthContext } from "../../Provider/Provider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/Provider";
 
 const Login = () => {
     const [errorMsg, setErrorMsg] = useState('');
-    const {signIn, googleSignIn} = useContext(AuthContext);
+    const {signIn, googleSignIn} = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
 

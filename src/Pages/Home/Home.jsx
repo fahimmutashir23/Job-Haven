@@ -7,6 +7,7 @@ import { HashLoader } from "react-spinners";
 import Banner from "../../Components/Banner/Banner";
 import { Helmet } from "react-helmet-async";
 import ContactUs from "./ContactUs";
+import HappyCustomer from "./HappyCustomer";
 
 
 const Home = () => {
@@ -52,6 +53,7 @@ const Home = () => {
           <CategoryJob key={item._id} job={item}></CategoryJob>
         ))}
       </div>
+      <HappyCustomer></HappyCustomer>
       <ContactUs></ContactUs>
     </div>
   );

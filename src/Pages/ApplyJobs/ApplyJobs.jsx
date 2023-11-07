@@ -9,7 +9,6 @@ const ApplyJobs = () => {
   const axios = useAxios();
   const { user } = useContext(AuthContext);
   const [data, setData] = useState(null);
-  console.log(data);
 
   useEffect(() => {
     axios.get(`applyJob?email=${user.email}`).then((res) => {
