@@ -8,6 +8,7 @@ import Banner from "../../Components/Banner/Banner";
 import { Helmet } from "react-helmet-async";
 import ContactUs from "./ContactUs";
 import HappyCustomer from "./HappyCustomer";
+// import { useQuery } from "@tanstack/react-query";
 
 
 const Home = () => {
@@ -28,6 +29,23 @@ const Home = () => {
     axios.get(`/jobs?category=${data}`).then((res) => setCategoryJob(res.data));
     setLoading(false)
   }, [axios, data]);
+
+  // const tanStackFunc = async() => {
+  //   const response = await axios.get(`/jobs?category=${data}`);
+  //   return response
+  // }
+
+  // const {data: categoryJob, isLoading} = useQuery({
+  //   queryKey: ["jobData"],
+  //   queryFn: tanStackFunc
+  // })
+
+  // if(isLoading){
+  //   <div className="flex justify-center my-7">
+  //       <HashLoader color="#7752FE" />
+  //     </div>
+  // }
+  // console.log(categoryJob);
 
   return (
     <div>

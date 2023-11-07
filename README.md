@@ -1,8 +1,8 @@
-# React + Vite
+## Live Site : https://nauseating-beginner.surge.sh/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 5 Feature in this website.
+* User can registration and login in this website.
+* User show all jobs in this website and if he/she logged in this site to apply any jobs otherwise he/she can login first.
+* All other see review in the review section click profile and create a animation using (Framer motion).
+* User can post job and see his/her posting job in the my job page. and delete and update here.
+* user apply job which job are not expire date and can not apply his/her posting job.

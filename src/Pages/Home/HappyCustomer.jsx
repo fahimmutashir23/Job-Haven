@@ -7,11 +7,13 @@ import "swiper/css";
 import "swiper/css/bundle";
 import SwiperBtn from "../../Components/SwiperBtn/SwiperBtn";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const HappyCustomer = () => {
   const [review, setReview] = useState("");
   const [name, setName] = useState("");
   const axios = useAxios();
+
   const tanStackFunc = async () => {
     const response = await axios.get("/customer");
     return response;
@@ -64,16 +66,19 @@ const HappyCustomer = () => {
                   onClick={() =>
                     handleReview(oneData.short_review, oneData.name)
                   }
-                  className="rounded-2xl hover:scale-[1.05] transition 1s cursor-pointer"
+                  className="rounded-2xl cursor-pointer"
                 >
-                  <div className="flex flex-col items-center">
+                  <motion.div
+                  whileHover={{ scale: 1 }}
+                  whileTap={{ scale: 0.9 }}
+                   className="flex flex-col items-center">
                     <img
                       src={oneData.photo}
                       alt=""
                       className="w-16 h-16 rounded-full"
                     />
                     {oneData.name}
-                  </div>
+                  </motion.div>
                 </div>
               </SwiperSlide>
             ))}

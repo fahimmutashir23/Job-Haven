@@ -1,27 +1,13 @@
 import axios from "axios";
-import { useEffect } from "react";
-
 
 
 const axiosData = axios.create({
-    baseURL: `http://localhost:5000`,
+    baseURL: `https://assignment-11-server-two-roan.vercel.app`,
     withCredentials: true
 })
 
 const useAxios = () => {
   
-    useEffect(() => {
-        axiosData.interceptors.response.use(res => {
-            return res
-        }, 
-        error => {
-            if(error.response.status === 401 || error.response.status === 403){
-                console.log("logout");
-                
-            }
-        })
-    }, [])
-
     return axiosData
 };
 

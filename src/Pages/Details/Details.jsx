@@ -1,3 +1,4 @@
+import logo from "../../assets/image/logo/job_haven_1.png"
 import { useContext, useEffect, useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import { useParams } from "react-router-dom";
@@ -99,8 +100,11 @@ const Details = () => {
           <div className="">
             <div className="flex gap-8">
               <img src={photo} alt="" className="w-1/2 rounded-l-2xl" />
-              <div className="w-1/2 pr-5 mt-5">
-                <div>
+              <div className="w-1/2 pr-5 mt-5 relative">
+                <div className="absolute right-2 -top-2">
+                  <img src={logo} alt="" className="w-24"/>
+                </div>
+                <div className="mt-5">
                   <span className="text-xl font-semibold text-orange-500">
                     Job Description :
                   </span>{" "}
