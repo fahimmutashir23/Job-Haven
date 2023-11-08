@@ -52,7 +52,7 @@ const Provider = ({children}) => {
                     
                 })
             } else{
-                axios.post('/logOut', userEmail).then(() => {})
+                axios.post('/logOut').then(() => {})
             }
         })
         return () => {

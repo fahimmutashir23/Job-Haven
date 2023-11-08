@@ -40,7 +40,7 @@ const ContactUs = () => {
       <h1 className="text-center font-bold text-3xl bg-base-200 py-2 px-8 rounded-b-lg max-w-fit mx-auto mb-5">
         Contact Us
       </h1>
-      <div className="flex gap-5 items-center">
+      <div className="flex flex-col md:flex-row justify-center gap-5 items-center">
         <div className="w-1/2 flex justify-center">
           <img src={contact} className="w-2/3" />
         </div>

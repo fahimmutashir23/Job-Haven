@@ -7,7 +7,6 @@ const axiosData = axios.create({
 })
 
 const useAxios = () => {
-  
     return axiosData
 };
 
