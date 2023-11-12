@@ -1,10 +1,13 @@
-import { useContext } from "react";
-import { AuthContext } from "../Provider/Provider";
+
+import auth from "../firebase/firebase.config";
+import { signOut } from "firebase/auth";
 
 
 const useAuth = () => {
-    const auth = useContext(AuthContext)
-    return auth
+    const logout = () =>{
+        return signOut(auth);
+    }
+    return {logout}
 };
 
 export default useAuth;

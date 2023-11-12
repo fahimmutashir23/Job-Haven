@@ -41,11 +41,11 @@ const ContactUs = () => {
         Contact Us
       </h1>
       <div className="flex flex-col md:flex-row justify-center gap-5 items-center">
-        <div className="w-1/2 flex justify-center">
+        <div className="md:w-1/2 flex justify-center">
           <img src={contact} className="w-2/3" />
         </div>
 
-        <div className="w-1/2 px-5">
+        <div className="md:w-1/2 px-5">
           <form onSubmit={handleSubmit}>
             <label className="block mb-2 text-sm font-medium ">Your Name</label>
             <div className="relative">
